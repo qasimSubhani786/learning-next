@@ -11,9 +11,9 @@ export default function ErrorPage({ error, reset }: Props) {
   return (
     <div>
       <div>An unexpected Error has occured</div>
-      <buttton className="btn" onClick={() => reset()}>
+      <button className="btn" onClick={() => reset()}>
         Retry
-      </buttton>
+      </button>
     </div>
   );
 }

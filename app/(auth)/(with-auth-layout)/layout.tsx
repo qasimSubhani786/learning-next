@@ -24,10 +24,11 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <input value={input} onChange={(e) => setInput(e.target.value)} />
       <div className="border-2 p-4 bg-green-400 flex items-center justify-center">
-        {navlinks.map((link) => {
+        {navlinks.map((link, index) => {
           const isActive = pathname.startsWith(link.href);
           return (
             <Link
+              key={index}
               className={
                 isActive ? "font-bold text-red-800 mr-4" : "text-blue-500 mr-4"
               }

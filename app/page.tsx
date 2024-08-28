@@ -11,8 +11,8 @@ import { debounce } from "./_libs/util/helper";
 const app: any = new Realm.App({ id: "application-0-kmhqtkf" });
 
 export default function Home() {
-  const [user, setUser] = useState();
-  const [events, setEvents] = useState([]);
+  const [user, setUser] = useState<any>();
+  const [events, setEvents] = useState<Array<any>>([]);
 
   useEffect(() => {
     const login = async () => {

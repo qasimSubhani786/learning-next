@@ -1,6 +1,6 @@
 import RealtimesocketSchema from "../../../_libs/mongo/models/realtime";
 import connectMongoDB from "@/app/_libs/mongo/mongodb";
-import { generateApiResponse } from "@/app/_libs/util/apputil";
+import { generateApiResponse } from "../../../_libs/util/appUtil";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {

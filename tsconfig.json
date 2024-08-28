@@ -29,7 +29,8 @@
     ".next/types/**/*.ts",
     "app/api/user/create-user/route.js",
     "app/about/aboutComp.tsx",
-    "app/_libs/util/helper.js"
+    "app/_libs/util/helper.js",
+    "app/master/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

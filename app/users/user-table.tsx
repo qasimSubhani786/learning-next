@@ -1,7 +1,7 @@
 import { sort } from "fast-sort";
 import Link from "next/link";
 import React from "react";
-import useSWR from "swr";
+import UseSWR from "swr";
 import { GetServerSideProps } from "next";
 
 interface User {
@@ -18,16 +18,16 @@ interface PageProps {
   initialData: User;
 }
 
-const productFetcher = async ({ url }: { url: string }) => {
+const ProductFetcher = async ({ url }: { url: string }) => {
   const query = await fetch(`${url}`);
   const response = await query.json();
   return response;
 };
 
 const getProducts = () => {
-  const { data, error, isLoading } = useSWR(
+  const { data, error, isLoading } = UseSWR(
     ["/api/user/get-all-users"],
-    ([url]) => productFetcher({ url })
+    ([url]) => ProductFetcher({ url })
   );
 
   return { data, error, isLoading };

@@ -1,6 +1,6 @@
 import User from "@/app/_libs/mongo/models/user";
 import connectMongoDB from "@/app/_libs/mongo/mongodb";
-import { generateApiResponse } from "@/app/_libs/util/apputil";
+import { generateApiResponse } from "../../../_libs/util/appUtil";
 import { NextResponse } from "next/server";
 
 export const GET = async (req) => {

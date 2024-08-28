@@ -8,7 +8,7 @@ import { debounce } from "../_libs/util/helper";
 
 // Create the Application
 
-const app: any = new Realm.App({ id: "application-0-kmhqtkf" });
+const app = new Realm.App({ id: "application-0-kmhqtkf" });
 
 function Master() {
   const [userData, setUserData] = useState([]);
