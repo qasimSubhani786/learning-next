@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "name": "My awesome PWA app",
+  "name": "Progressive Webb App",
   "short_name": "PWA App",
   "icons": [
     {
