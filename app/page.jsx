@@ -3,11 +3,10 @@ import React, { useEffect } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 
-const API_KEY = "AIzaSyAQ5d4xBlQ4N01XV8Sp11pM6TKnb0coZ6Q";
-const CLIENT_ID =
-  "340333856491-fbeavp89pggtigfsn1h0a5bmkavudasj.apps.googleusercontent.com";
-const CLIENT_Secret = "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";
-const SCOPES = "https://www.googleapis.com/auth/drive";
+const API_KEY = process.env.API_KEY;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_Secret = process.env.CLIENT_Secret;
+const SCOPES = process.env.SCOPES;
 
 const Login = () => {
   const onSuccess = (res) => {
