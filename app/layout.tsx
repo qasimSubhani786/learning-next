@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en" data-theme="winter">
       <body suppressHydrationWarning={true} className={inter.className}>
         <header className="flex p-6 bg-slate-500 items-center justify-center">
-          <p className=" font-bold text-white">HEADER</p>
+          <p className=" font-bold text-white">Google Docx API</p>
         </header>
         <div className="h-screen">{children}</div>
         {/* <footer className="flex p-6  bg-red-400 items-center justify-center">

@@ -30,7 +30,8 @@
     "app/api/user/create-user/route.js",
     "app/about/aboutComp.tsx",
     "app/_libs/util/helper.js",
-    "app/master/page.jsx"
+    "app/master/page.jsx",
+    "app/page.jsx"
   ],
   "exclude": ["node_modules"]
 }
