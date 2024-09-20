@@ -8,6 +8,13 @@ const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_Secret = process.env.CLIENT_Secret;
 const SCOPES = process.env.SCOPES;
 
+const openLinkInNewTab = (url) => {
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer"; // This prevents security issues
+  anchor.click();
+};
 const Login = () => {
   const onSuccess = (res) => {
     console.log("Login Success! Current User: ", res?.profileObj);
@@ -62,9 +69,8 @@ function MainPage() {
 
   const createFile = async () => {
     if (documentID) {
-      return window.open(
-        `https://docs.google.com/document/d/${documentID}/edit`,
-        "_blank"
+      return openLinkInNewTab(
+        `https://docs.google.com/document/d/${documentId}/edit`
       );
     }
     var accessToken = gapi.auth.getToken().access_token;
@@ -81,10 +87,7 @@ function MainPage() {
     const documentId = result.documentId;
     console.log("Result", result.documentId);
     localStorage.setItem("DocumentId", documentId);
-    window.open(
-      `https://docs.google.com/document/d/${documentId}/edit`,
-      "_blank"
-    );
+    openLinkInNewTab(`https://docs.google.com/document/d/${documentId}/edit`);
   };
   return (
     <div>
