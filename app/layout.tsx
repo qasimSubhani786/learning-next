@@ -22,9 +22,36 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="winter">
       <body suppressHydrationWarning={true} className={inter.className}>
-        <header className="flex p-6 bg-slate-500 items-center justify-center">
-          <p className=" font-bold text-white">Google Docx API</p>
+     
+
+        <header className="bg-gradient-to-r from-blue-500 to-indigo-600 p-6">
+          <div className="container mx-auto flex items-center justify-between">
+            <div className="flex items-center">
+             
+              <h1 className="text-white text-3xl font-bold">Drive Manager</h1>
+            </div>
+           
+            <div className="md:hidden">
+              <button className="text-white hover:text-gray-200 transition focus:outline-none">
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </header>
+
         <div className="h-screen">{children}</div>
         {/* <footer className="flex p-6  bg-red-400 items-center justify-center">
           <p>FOOTER</p>
