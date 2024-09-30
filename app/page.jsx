@@ -6,8 +6,8 @@ import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 
 const CLIENT_ID =
-process.env.CLIENT_ID
-const API_KEY = process.env.API_KEY
+  "914402617682-shm9b5d1nu1mr31lvie2hk64r6dut7ti.apps.googleusercontent.com";
+const API_KEY = "AIzaSyB-yVd1oE5uLffxXbyyShzvKhLo4VtS9EU";
 const DISCOVERY_DOCS = [
   "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest",
 ];
