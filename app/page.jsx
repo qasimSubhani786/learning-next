@@ -1,12 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 import { gapi } from "gapi-script";
 
-const API_KEY = process.env.API_KEY;
-const CLIENT_ID = process.env.CLIENT_ID;
-const CLIENT_Secret = process.env.CLIENT_Secret;
-const SCOPES = process.env.SCOPES;
+const API_KEY = "AIzaSyAQ5d4xBlQ4N01XV8Sp11pM6TKnb0coZ6Q";
+const CLIENT_ID =
+  "340333856491-fbeavp89pggtigfsn1h0a5bmkavudasj.apps.googleusercontent.com";
+const CLIENT_Secret = "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";
+const SCOPES = "https://www.googleapis.com/auth/drive";
 
 const openLinkInNewTab = (url) => {
   const anchor = document.createElement("a");
@@ -54,12 +55,17 @@ const LogOut = () => {
 };
 
 function MainPage() {
+  const [fileId, setFileId] = useState(""); // Google Docs file ID you want to watch
+
   useEffect(() => {
     function start() {
       gapi.client.init({
         apiKey: API_KEY,
         clientId: CLIENT_ID,
         scope: SCOPES,
+        discoveryDocs: [
+          "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest",
+        ],
       });
     }
 
@@ -68,9 +74,10 @@ function MainPage() {
   var documentID = localStorage.getItem("DocumentId") ?? null;
 
   const createFile = async () => {
+    debugger;
     if (documentID) {
       return openLinkInNewTab(
-        `https://docs.google.com/document/d/${documentId}/edit`
+        `https://docs.google.com/document/d/${documentID}/edit`
       );
     }
     var accessToken = gapi.auth.getToken().access_token;
@@ -89,6 +96,36 @@ function MainPage() {
     localStorage.setItem("DocumentId", documentId);
     openLinkInNewTab(`https://docs.google.com/document/d/${documentId}/edit`);
   };
+
+  const handleWatchFile = async () => {
+    debugger;
+    const accessToken = gapi.auth.getToken().access_token;
+
+    // Use Google Drive API to set up a watch on the file
+    const channelId = "unique-channel-12"; // Generate a unique channel ID
+    const webhookUrl = "https://b02d-154-80-62-159.ngrok-free.app/api/webhook"; // Your webhook URL
+
+    gapi.client
+      .request({
+        path: `/drive/v3/files/${fileId}/watch`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: {
+          id: channelId,
+          type: "web_hook",
+          address: webhookUrl,
+        },
+      })
+      .then((response) => {
+        console.log("Watch setup:", response);
+      })
+      .catch((error) => {
+        console.error("Error setting up watch:", error);
+      });
+  };
+
   return (
     <div>
       <Login />
@@ -97,6 +134,14 @@ function MainPage() {
       <button className="btn" onClick={createFile}>
         {`${documentID ? "View" : "Create"} google Docx File`}
       </button>
+
+      <input
+        type="text"
+        placeholder="Enter Google Docs File ID"
+        value={fileId}
+        onChange={(e) => setFileId(e.target.value)}
+      />
+      <button onClick={handleWatchFile}>Watch File for Changes</button>
     </div>
   );
 }
